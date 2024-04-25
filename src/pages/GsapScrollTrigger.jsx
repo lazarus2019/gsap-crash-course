@@ -1,35 +1,59 @@
-import gsap from "gsap";
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/all";
+import gsap from 'gsap';
+import { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/all';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const GsapScrollTrigger = () => {
   const scrollRef = useRef();
 
+  // useGSAP(
+  //   () => {
+  //     // get all the boxes in the scrollRef
+  //     const boxes = gsap.utils.toArray(scrollRef.current.children);
+
+  //     boxes.forEach((box) => {
+  //       gsap.to(box, {
+  //         x: 150 * (boxes.indexOf(box) + 4.5),
+  //         rotation: 360,
+  //         borderRadius: "100%",
+  //         scale: 1.5,
+  //         scrollTrigger: {
+  //           trigger: box,
+  //           start: "bottom bottom", // when the bottom of the box hits the bottom of the viewport
+  //           end: "top 20%", // end when the top of the box hits 20% from the top of the viewport
+  //           scrub: true, // scrubbing makes the animation smooth
+  //         },
+  //         ease: "power1.inOut",
+  //       });
+  //     });
+  //   },
+  //   { scope: scrollRef }
+  // );
+
   useGSAP(
     () => {
-      // get all the boxes in the scrollRef
-      const boxes = gsap.utils.toArray(scrollRef.current.children);
+      const boxes = gsap.utils.toArray(scrollRef.current.children); // Learn more gsap.utils here: https://gsap.com/docs/v3/GSAP/gsap.utils/
 
       boxes.forEach((box) => {
         gsap.to(box, {
-          x: 150 * (boxes.indexOf(box) + 4.5),
+          x: 150,
           rotation: 360,
-          borderRadius: "100%",
+          borderRadius: '100%',
           scale: 1.5,
           scrollTrigger: {
             trigger: box,
-            start: "bottom bottom", // when the bottom of the box hits the bottom of the viewport
-            end: "top 20%", // end when the top of the box hits 20% from the top of the viewport
-            scrub: true, // scrubbing makes the animation smooth
+            start: 'bottom bottom',
+            end: 'top 20%',
+            scrub: true, // makes animating base on scroll position
+            markers: true,
           },
-          ease: "power1.inOut",
+          ease: 'power1.inOut',
         });
       });
     },
-    { scope: scrollRef }
+    { scope: scrollRef } // define the scope that animation must be effect
   );
 
   return (
@@ -45,18 +69,18 @@ const GsapScrollTrigger = () => {
         With ScrollTrigger, you can define various actions to be triggered at
         specific scroll points, such as starting or ending an animation,
         scrubbing through animations as the user scrolls, pinning elements to
-        the screen, and more.{" "}
+        the screen, and more.{' '}
       </p>
 
       <p className="mt-5 text-gray-500">
-        Read more about the{" "}
+        Read more about the{' '}
         <a
           href="https://gsap.com/docs/v3/Plugins/ScrollTrigger/"
           target="_blank"
           rel="noreferrer noopener nofollow"
         >
           gsap scroll trigger
-        </a>{" "}
+        </a>{' '}
         method.
       </p>
 

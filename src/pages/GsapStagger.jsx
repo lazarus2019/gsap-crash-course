@@ -1,28 +1,46 @@
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 const GsapStagger = () => {
+  // useGSAP(() => {
+  //   gsap.to(
+  //     ".stagger-box",
+  //     {
+  //       y: 250,
+  //       rotation: 360,
+  //       borderRadius: "100%",
+  //       ease: "power3.inOut",
+  //       repeat: -1,
+  //       yoyo: true,
+  //       // stagger: 0.5,
+  //       stagger: {
+  //         amount: 1.5, // the amount of time to stagger the animations between each element
+  //         grid: [2, 1], // the number of columns and rows in the grid
+  //         axis: "y", // the axis along which to stagger the animations
+  //         ease: "circ.inOut",
+  //         from: "center", // the starting position of the staggered animations
+  //       },
+  //     },
+  //     0.5
+  //   );
+  // });
+
   useGSAP(() => {
-    gsap.to(
-      ".stagger-box",
-      {
-        y: 250,
-        rotation: 360,
-        borderRadius: "100%",
-        ease: "power3.inOut",
-        repeat: -1,
-        yoyo: true,
-        // stagger: 0.5,
-        stagger: {
-          amount: 1.5, // the amount of time to stagger the animations between each element
-          grid: [2, 1], // the number of columns and rows in the grid
-          axis: "y", // the axis along which to stagger the animations
-          ease: "circ.inOut",
-          from: "center", // the starting position of the staggered animations
-        },
+    gsap.to('.stagger-box', {
+      y: 200,
+      rotation: 360,
+      borderRadius: '100%',
+      repeat: -1,
+      yoyo: true,
+      // stagger: 0.5
+      stagger: {
+        amount: 2, // delay between each elements
+        grid: [1, 1], // select number of columns and ???
+        axis: 'y', // transform origin? (try with direction 'x'),
+        ease: 'circ.inOut',
+        from: 'random', // edges: out=>in, center: in-center=>out, start, end, random
       },
-      0.5
-    );
+    });
   });
 
   return (
@@ -43,14 +61,14 @@ const GsapStagger = () => {
       </p>
 
       <p className="mt-5 text-gray-500">
-        Read more about the{" "}
+        Read more about the{' '}
         <a
           href="https://gsap.com/resources/getting-started/Staggers"
           target="_blank"
           rel="noreferrer noopener nofollow"
         >
           Gsap Stagger
-        </a>{" "}
+        </a>{' '}
         feature.
       </p>
 
